@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>TODO list</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" id="input" placeholder="Co chcesz zrobić?" v-on:keyup="addTask($event)">
+        <!-- v-bind:class="{ 'ended-task': task.isEnded }" -->
+        <ul v-if="tasks">
+            <li v-for="(task, index) in tasks"                 
+                v-bind:key="index" 
+                @click="endTask(index)">{{ task.text }}</li> 
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    tasks: [
+                        { 
+                            text: 'test',
+                            isEnded: true
+                        },
+                    ]
+                }
+            },
+            methods: {
+                addTask(event) {
+                    if (event.which === 13) {
+                        this.tasks.push({
+                                text: event.target.value,
+                                isEnded: false
+                            });
+                        event.target.value = '';
+                    }
+                },
+                endTask(taskIdx) {
+                    this.tasks.splice(taskIdx, 1);
+                    console.log(this.tasks)
+                }
+            },
+        });
+    </script>
+</body>
+</html>
