@@ -1,3 +1,7 @@
-.ended-class {
+ul {
+    list-style: none;
+}
+.ended-task {
+    color: gray;
     text-decoration: line-through;
 }

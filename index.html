@@ -14,8 +14,10 @@
         <!-- v-bind:class="{ 'ended-task': task.isEnded }" -->
         <ul v-if="tasks">
             <li v-for="(task, index) in tasks"                 
+                v-bind:class="{ 'ended-task': task.isEnded }"
                 v-bind:key="index" 
-                @click="endTask(index)">{{ task.text }}</li> 
+                @click="endTask(index)"
+                >{{ task.text }}</li> 
         </ul>
     </div>
     <script>
@@ -26,7 +28,11 @@
                     tasks: [
                         { 
                             text: 'test',
-                            isEnded: true
+                            isEnded: false
+                        },
+                        { 
+                            text: 'test2',
+                            isEnded: false
                         },
                     ]
                 }
@@ -42,8 +48,7 @@
                     }
                 },
                 endTask(taskIdx) {
-                    this.tasks.splice(taskIdx, 1);
-                    console.log(this.tasks)
+                    this.tasks[taskIdx].isEnded = true;
                 }
             },
         });
