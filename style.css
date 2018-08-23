@@ -1,12 +1,20 @@
 * {
     box-sizing: border-box;
 }
+html {
+    background: linear-gradient(to bottom, #000, #434343);
+    background-attachment: fixed;
+    color: #fff;
+    font-family: "Lucida Console", Monaco, monospace;
+}
 ul {
     list-style: none;
+    width: 694;
 }
-li {
+#task {
     padding: 5px;
     font-size: 16pt;
+
 }
 .ended-task {
     color: gray;
@@ -14,11 +22,13 @@ li {
 }
 input {
     text-align: center;
-    outline: none;
-    background-color: white;
-    color: black;
+    background-color: inherit;
     border: 0;
     font-size: 36pt;
+}
+
+input:focus {
+    outline: none;
 }
 
 #container {
@@ -28,4 +38,24 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+#selector {
+    flex-direction: row;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#task-span {
+    float: left;
+    width: 300px;
+    cursor: pointer;
+}
+
+#delete {
+    cursor: pointer;
 }
